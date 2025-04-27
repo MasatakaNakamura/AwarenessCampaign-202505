@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一システム事業部 5月啓蒙活動のご案内 ～NotebookLMのご案内～</title>
+    <style>
+        :root {
+            --primary: #4285F4;
+            --secondary: #34A853;
+            --accent: #FBBC05;
+            --light: #F8F9FA;
+            --dark: #202124;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Meiryo', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(66, 133, 244, 0.85), rgba(52, 168, 83, 0.85)), url('/api/placeholder/1200/400') center/cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        section {
+            padding: 50px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 25px 0 15px;
+        }
+        
+        ul {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .pain-points {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .pain-points h3 {
+            color: var(--dark);
+            margin-top: 0;
+        }
+        
+        .benefit-item {
+            background: var(--light);
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box h3 {
+            color: #d32f2f;
+            margin-top: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #2d8d47;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .event-info {
+            background: rgba(66, 133, 244, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .event-info h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .dialog-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .dialog-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-dialog {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+        }
+        
+        .admin-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.1);
+            border: none;
+            color: rgba(0,0,0,0.5);
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .edit-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        
+        .edit-form input, .edit-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .edit-form button {
+            margin-top: 20px;
+            padding: 8px 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 30px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>第一システム事業部 5月啓蒙活動のご案内 ～NotebookLMのご案内～</h1>
+            <p class="subtitle">「あれ、もう資料読み終わったの？」<br>AIで仕事が早く終わる、新しいドキュメント体験！</p>
+            <p>設計書、技術文書、仕様書… 大量のドキュメント読解、NotebookLMで劇的にスピードアップしませんか？ 🚀</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="event-info">
+            <h3>勉強会情報</h3>
+            <p><strong>開催日時：</strong><span id="event-date">2025年5月15日（木）15:00〜16:00</span></p>
+            <p><strong>開催方法：</strong>Google Meet（オンライン）</p>
+            <p><strong>担当者：</strong>第一システム事業部　中村匡隆</p>
+            <button class="cta-button" id="meet-button">勉強会に参加する（Google Meet）</button>
+        </section>
+        
+        <section>
+            <h2>🤔 エンジニアの皆さん、こんな「あるある」ありませんか？</h2>
+            <div class="pain-points">
+                <ul>
+                    <li>分厚い設計書、必要な情報がどこにあるか探すだけで一苦労…</li>
+                    <li>急な仕様変更！影響範囲の調査に時間がかかってしまう…</li>
+                    <li>新しいフレームワーク、公式ドキュメントを読むのが大変…</li>
+                    <li>問い合わせ対応、関連する過去の資料を探し出すのが面倒…</li>
+                </ul>
+                <p><strong>その時間、NotebookLMがサクッと短縮します！✨</strong></p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>💡 NotebookLMって何？</h2>
+            <p>NotebookLMは、<strong>あなたがアップロードした資料だけ</strong>を賢く読んでくれる、あなた専用のAIアシスタントです。いつものGoogleアカウントですぐに使えます。</p>
+            
+            <h3>一般的なAI（ChatGPTなど）との違いは？</h3>
+            <ul>
+                <li><strong>情報源が限定的:</strong> あなたの資料だけを読むので、Webの情報に惑わされません。</li>
+                <li><strong>出典表示:</strong> 回答の根拠が資料のどこにあるか示してくれるので、信頼性を確認しやすいです。</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>🎉 NotebookLMで、あなたの業務がこう変わる！</h2>
+            <div class="benefit-item">
+                <h3>読む時間を大幅カット</h3>
+                <p>長大なドキュメントもAIが要約！ポイントを素早く掴めます。</p>
+            </div>
+            <div class="benefit-item">
+                <h3>探す手間をゼロに</h3>
+                <p>「〇〇機能の仕様は？」と聞けば、関連箇所をピンポイントで提示。</p>
+            </div>
+            <div class="benefit-item">
+                <h3>理解スピードUP</h3>
+                <p>専門用語の定義を聞いたり、複雑な箇所を分かりやすく説明させたりできます。</p>
+            </div>
+            <div class="benefit-item">
+                <h3>調査・分析を効率化</h3>
+                <p>複数資料を横断して情報を整理・比較。変更点の影響範囲調査のヒントにも。</p>
+            </div>
+            <p><strong>=> 結果、ドキュメント関連業務の工数を大幅に削減できます！</strong></p>
+        </section>
+        
+        <section>
+            <h2>🔧 具体的な活用シーン (エンジニア向け)</h2>
+            <ul>
+                <li><strong>設計書・仕様書の読解:</strong> 「〇〇クラスのメソッド一覧を教えて」「△△に関する記述を要約して」</li>
+                <li><strong>技術調査・学習:</strong> 「このチュートリアルの手順をリストアップして」「エラーコードXXXの原因は？」(資料に記載があれば)</li>
+                <li><strong>コードレビューの補助:</strong> (※コード自体を読み込ませる際は注意) 設計思想や関連ドキュメントとの整合性チェックの参考に。</li>
+                <li><strong>障害調査:</strong> ログやマニュアルを読み込ませて、関連情報の抽出補助に。</li>
+            </ul>
+        </section>
+        
+        <section style="text-align: center;">
+            <h2>🚀 さあ、今すぐNotebookLMで業務を効率化しよう！</h2>
+            <p>まずは、公開されている技術文書や、機密性のない自分のメモなどで試してみませんか？<br>驚くほど簡単に、あなたの「知りたいこと」にアクセスできますよ！</p>
+            <a href="https://notebooklm.google.com" target="_blank" class="cta-button">NotebookLMを使ってみる！</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 第一システム事業部</p>
+        </div>
+    </footer>
+
+    <!-- 管理者用ダイアログ -->
+    <div class="dialog-overlay" id="admin-dialog">
+        <div class="dialog-content">
+            <button class="close-dialog" id="close-admin-dialog">&times;</button>
+            <h2>勉強会情報の編集</h2>
+            <form class="edit-form" id="admin-form">
+                <label for="edit-date">開催日時：</label>
+                <input type="text" id="edit-date" placeholder="例：2025年5月15日（木）15:00〜16:00">
+                
+                <label for="edit-meet-url">Google Meet URL：</label>
+                <input type="text" id="edit-meet-url" placeholder="例：https://meet.google.com/xxx-xxxx-xxx">
+                
+                <button type="submit">更新する</button>
+            </form>
+        </div>
+    </div>
+    
+    <button class="admin-button" id="admin-button">管理者設定</button>
+    
+    <script>
+        // 初期設定
+        let meetUrl = "https://meet.google.com/abc-defg-hij"; // 仮のMeet URL
+        
+        // LocalStorageから保存された設定を読み込む
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('eventDate')) {
+                document.getElementById('event-date').textContent = localStorage.getItem('eventDate');
+            }
+            
+            if (localStorage.getItem('meetUrl')) {
+                meetUrl = localStorage.getItem('meetUrl');
+            }
+            
+            // 編集フォームの初期値を設定
+            document.getElementById('edit-date').value = document.getElementById('event-date').textContent;
+            document.getElementById('edit-meet-url').value = meetUrl;
+        });
+        
+        // Google Meetボタンのクリックイベント
+        document.getElementById('meet-button').addEventListener('click', function() {
+            window.open(meetUrl, '_blank');
+        });
+        
+        // 管理者設定ボタンのクリックイベント
+        document.getElementById('admin-button').addEventListener('click', function() {
+            document.getElementById('admin-dialog').classList.add('active');
+        });
+        
+        // ダイアログを閉じるボタン
+        document.getElementById('close-admin-dialog').addEventListener('click', function() {
+            document.getElementById('admin-dialog').classList.remove('active');
+        });
+        
+        // 管理者フォームの送信イベント
+        document.getElementById('admin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newDate = document.getElementById('edit-date').value;
+            const newMeetUrl = document.getElementById('edit-meet-url').value;
+            
+            // 値を保存
+            localStorage.setItem('eventDate', newDate);
+            localStorage.setItem('meetUrl', newMeetUrl);
+            
+            // 画面を更新
+            document.getElementById('event-date').textContent = newDate;
+            meetUrl = newMeetUrl;
+            
+            // ダイアログを閉じる
+            document.getElementById('admin-dialog').classList.remove('active');
+            
+            alert('更新しました！');
+        });
+    </script>
+</body>
+</html>
